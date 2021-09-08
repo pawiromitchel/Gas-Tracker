@@ -11,66 +11,64 @@
 </head>
 
 <body>
-    <section class="section" id="app">
-        <div class="container">
+    <div class="container" id="app">
+        <section class="section">
             <h1 class="title">
                 ⛽ Just a Gas Tracker
             </h1>
             Data fetched at <strong>{{date}}</strong>
             <progress class="progress is-primary" v-bind:value="progressValue" max="100"></progress>
-            <div class="container" v-for="chain in chains">
-                <section class="section">
-                    <h1 class="title is-2 has-text-centered">{{chain.name}}</h1>
-                    <hr>
-                    <div class="columns">
-                        <div class="column">
-                            <article class="message is-success">
-                                <div class="message-body has-text-centered">
-                                    <h2 class="title is-4">🚀 Instant</h2>
-                                    <strong>
-                                        <h3 class="title">{{chain.gasPrice.instant}}</h3>
-                                    </strong>
-                                </div>
-                            </article>
+        </section>
+        <section class="section" v-for="chain in chains">
+            <h1 class="title is-2 has-text-centered">{{chain.name}}</h1>
+            <hr>
+            <div class="columns">
+                <div class="column">
+                    <article class="message is-success">
+                        <div class="message-body has-text-centered">
+                            <h2 class="title is-4">🚀 Instant</h2>
+                            <strong>
+                                <h3 class="title">{{chain.gasPrice.instant}}</h3>
+                            </strong>
                         </div>
-                        <div class="column">
-                            <article class="message is-link">
-                                <div class="message-body has-text-centered">
-                                    <h2 class="title is-4">🚂 Fast</h2>
-                                    <strong>
-                                        <h3 class="title">{{chain.gasPrice.fast}}</h3>
-                                    </strong>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="column">
-                            <article class="message is-warning">
-                                <div class="message-body has-text-centered">
-                                    <h2 class="title is-4">🐌 Standard</h2>
-                                    <strong>
-                                        <h3 class="title">{{chain.gasPrice.standard}}</h3>
-                                    </strong>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    Data provided by
-                    <span class="tag is-link">
-                        Zapper API
-                    </span>
-                    Technology used
-                    <span class="tag is-primary">
-                        VueJS
-                    </span>
-                    Made with ♥ by <a href="https://twitter.com/Pawiromitchel">pawiromitchel</a>
+                    </article>
                 </div>
-            </footer>
-        </div>
-    </section>
+                <div class="column">
+                    <article class="message is-link">
+                        <div class="message-body has-text-centered">
+                            <h2 class="title is-4">🚂 Fast</h2>
+                            <strong>
+                                <h3 class="title">{{chain.gasPrice.fast}}</h3>
+                            </strong>
+                        </div>
+                    </article>
+                </div>
+                <div class="column">
+                    <article class="message is-warning">
+                        <div class="message-body has-text-centered">
+                            <h2 class="title is-4">🐌 Standard</h2>
+                            <strong>
+                                <h3 class="title">{{chain.gasPrice.standard}}</h3>
+                            </strong>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                Data provided by
+                <span class="tag is-link">
+                    Zapper API
+                </span>
+                Technology used
+                <span class="tag is-primary">
+                    VueJS
+                </span>
+                Made with ♥ by <a href="https://twitter.com/Pawiromitchel">pawiromitchel</a>
+            </div>
+        </footer>
+    </div>
     <script src="./utils.js"></script>
     <script src="./app.js"></script>
 </body>
