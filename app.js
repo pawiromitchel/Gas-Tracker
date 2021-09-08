@@ -40,6 +40,6 @@ const newYearCountdown = setInterval(function () {
         getData();
         // reset the values
         app.progressValue = 0;
-        counter = 5;
+        counter = 25;
     }
 }, 1000);
