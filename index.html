@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+    <section class="section" id="app">
+        <div class="container">
+            <h1 class="title">
+                Gas Tracker
+                <span class="tag is-link">
+                    Build with Zapper API
+                </span>
+            </h1>
+            <div v-for="chain in chains">
+                <hr>
+                <h1 class="title">{{chain.name}}</h1>
+                <div class="columns">
+                    <div class="column">
+                        <article class="message is-primary">
+                            <div class="message-header">
+                                <p>Instant</p>
+                            </div>
+                            <div class="message-body">
+                                {{chain.gasPrice.instant}}
+                            </div>
+                        </article>
+                    </div>
+                    <div class="column">
+                        <article class="message is-link">
+                            <div class="message-header">
+                                <p>Fast</p>
+                            </div>
+                            <div class="message-body">
+                                {{chain.gasPrice.fast}}
+                            </div>
+                        </article>
+                    </div>
+                    <div class="column">
+                        <article class="message is-warning">
+                            <div class="message-header">
+                                <p>Standard</p>
+                            </div>
+                            <div class="message-body">
+                                {{chain.gasPrice.standard}}
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./utils.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
