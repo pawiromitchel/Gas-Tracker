@@ -17,37 +17,37 @@
             </h1>
             Data fetched at <strong>{{date}}</strong>
             <progress class="progress is-primary" v-bind:value="progressValue" max="100"></progress>
-            <div v-for="chain in chains">
+            <div class="box" v-for="chain in chains">
+                <h1 class="title is-2 has-text-centered">{{chain.name}}</h1>
                 <hr>
-                <h1 class="title">{{chain.name}}</h1>
                 <div class="columns">
                     <div class="column">
-                        <article class="message is-primary">
-                            <div class="message-header">
-                                <p>🚀 Instant</p>
-                            </div>
-                            <div class="message-body">
-                                {{chain.gasPrice.instant}}
+                        <article class="message is-success">
+                            <div class="message-body has-text-centered">
+                                <h2 class="title is-4">🚀 Instant</h2>
+                                <strong>
+                                    <h3 class="title">{{chain.gasPrice.instant}}</h3>
+                                </strong>
                             </div>
                         </article>
                     </div>
                     <div class="column">
                         <article class="message is-link">
-                            <div class="message-header">
-                                <p>🚂 Fast</p>
-                            </div>
-                            <div class="message-body">
-                                {{chain.gasPrice.fast}}
+                            <div class="message-body has-text-centered">
+                                <h2 class="title is-4">🚂 Fast</h2>
+                                <strong>
+                                    <h3 class="title">{{chain.gasPrice.fast}}</h3>
+                                </strong>
                             </div>
                         </article>
                     </div>
                     <div class="column">
                         <article class="message is-warning">
-                            <div class="message-header">
-                                <p>🐌 Standard</p>
-                            </div>
-                            <div class="message-body">
-                                {{chain.gasPrice.standard}}
+                            <div class="message-body has-text-centered">
+                                <h2 class="title is-4">🐌 Standard</h2>
+                                <strong>
+                                    <h3 class="title">{{chain.gasPrice.standard}}</h3>
+                                </strong>
                             </div>
                         </article>
                     </div>
