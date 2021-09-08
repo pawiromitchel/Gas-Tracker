@@ -20,14 +20,16 @@ async function getGasPrices(network) {
 function getData() {
     app.date = new Date().toString();
     app.chains = [];
-    chains.forEach(async chain => {
-        const req = getGasPrices(chain);
-        const res = await req;
-        app.chains.push({
-            name: capitalize(removeDashes(chain)),
-            gasPrice: res
+
+    const requests = chains.map(chain => getGasPrices(chain));
+    Promise.all(requests).then(res => {
+        res.map((gasPrices, index) => {
+            app.chains.push({
+                name: capitalize(removeDashes(chains[index])),
+                gasPrice: gasPrices
+            })
         })
-    });
+    })
 }
 
 getData();
