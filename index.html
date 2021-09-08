@@ -13,11 +13,10 @@
     <section class="section" id="app">
         <div class="container">
             <h1 class="title">
-                Gas Tracker
-                <span class="tag is-link">
-                    Build with Zapper API
-                </span>
+                ⛽ Just a Gas Tracker
             </h1>
+            Data fetched at <strong>{{date}}</strong>
+            <progress class="progress is-primary" v-bind:value="progressValue" max="100"></progress>
             <div v-for="chain in chains">
                 <hr>
                 <h1 class="title">{{chain.name}}</h1>
@@ -25,7 +24,7 @@
                     <div class="column">
                         <article class="message is-primary">
                             <div class="message-header">
-                                <p>Instant</p>
+                                <p>🚀 Instant</p>
                             </div>
                             <div class="message-body">
                                 {{chain.gasPrice.instant}}
@@ -35,7 +34,7 @@
                     <div class="column">
                         <article class="message is-link">
                             <div class="message-header">
-                                <p>Fast</p>
+                                <p>🚂 Fast</p>
                             </div>
                             <div class="message-body">
                                 {{chain.gasPrice.fast}}
@@ -45,7 +44,7 @@
                     <div class="column">
                         <article class="message is-warning">
                             <div class="message-header">
-                                <p>Standard</p>
+                                <p>🐌 Standard</p>
                             </div>
                             <div class="message-body">
                                 {{chain.gasPrice.standard}}
@@ -54,9 +53,21 @@
                     </div>
                 </div>
             </div>
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    Data provided by
+                    <span class="tag is-link">
+                        Zapper API
+                    </span>
+                    Technology used
+                    <span class="tag is-primary">
+                        VueJS
+                    </span>
+                    Made with ♥ by <a href="https://twitter.com/Pawiromitchel">pawiromitchel</a>
+                </div>
+            </footer>
         </div>
     </section>
-
     <script src="./utils.js"></script>
     <script src="./app.js"></script>
 </body>
