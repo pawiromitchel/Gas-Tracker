@@ -8,7 +8,7 @@ var app = new Vue({
         refreshed: false
     },
     watch: {
-        chains() {
+        date() {
             this.refreshed = true
             setTimeout(() => { this.refreshed = false }, 1000)
         }
