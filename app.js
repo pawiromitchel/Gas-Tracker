@@ -8,7 +8,6 @@ const GasTracker = {
             progressValue: 0,
             date: '',
             chains: [],
-            counter: 100,
             refreshed: false
         }
     },
@@ -34,23 +33,16 @@ const GasTracker = {
         },
 
         getData: async () => {
-            app.date = new Date().toString();
-            const data = await Promise.all(chains.map(chain => app.getGasPrices(chain)))
+            app.date = moment().format('YYYY-MM-DD HH:mm:ss');
+            const data = await Promise.all(chains.map(chain => app.getGasPrices(chain)));
             data.map((gasPrices, index) => {
                 app.chains[index].gasPrice = gasPrices;
-            })
+            });
         },
 
         timerCountdown: setInterval(function () {
-            app.counter--;
-            app.progressValue += 1;
-            if (app.counter === 0) {
-                app.getData();
-                // reset the values
-                app.progressValue = 0;
-                app.counter = 100;
-            }
-        }, 500)
+            app.getData();
+        }, 10000)
     },
 
     watch: {
