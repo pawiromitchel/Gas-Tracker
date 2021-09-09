@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bulma-prefers-dark">
     <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .progress::-webkit-progress-value {
+            transition: width 0.25s ease;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,6 +32,11 @@
             <h1 class="title">
                 ⛽ Just a Gas Tracker
             </h1>
+            Data provided by
+            <span class="tag is-link">
+                Zapper
+            </span>
+            <hr>
             Data fetched at <strong>{{date}}</strong>
             <progress class="progress is-primary" v-bind:value="progressValue" max="100"></progress>
         </section>
@@ -42,6 +52,7 @@
                                 <h3 class="title is-1"
                                     :class="{'has-text-white': refreshed,'has-text-success':!refreshed}">
                                     {{chain.gasPrice.instant}}</h3>
+                                <h4 class="subtitle is-6">~15 Seconds</h4>
                             </strong>
                         </div>
                     </article>
@@ -54,6 +65,7 @@
                                 <h3 class="title is-1"
                                     :class="{'has-text-white': refreshed,'has-text-warning':!refreshed}">
                                     {{chain.gasPrice.fast}}</h3>
+                                <h4 class="subtitle is-6">~1 Minute</h4>
                             </strong>
                         </div>
                     </article>
@@ -66,6 +78,7 @@
                                 <h3 class="title is-1"
                                     :class="{'has-text-white': refreshed,'has-text-danger':!refreshed}">
                                     {{chain.gasPrice.standard}}</h3>
+                                <h4 class="subtitle is-6">~3-5 Minutes</h4>
                             </strong>
                         </div>
                     </article>
@@ -74,15 +87,12 @@
         </section>
         <footer class="footer">
             <div class="content has-text-centered">
-                Data provided by
-                <span class="tag is-link">
-                    Zapper API
-                </span>
-                Technology used
-                <span class="tag is-primary">
-                    VueJS
-                </span>
                 Made with ♥ by <a href="https://twitter.com/Pawiromitchel">pawiromitchel</a>
+                <hr>
+                <p><strong>Wanna buy me a coffee? ☕</strong><br>
+                    ETH or any ERC20: mitchel.eth || 0x5584A353528dfeB2Fc751Ab48b72D32726C79507<br>
+                    BTC Segwit: bc1qqfnfkrnhv903v9v38n98vvk35hgrp77ay7kwqr<br>
+                    BTC legacy: 1DhGZ1kvEF1wamq3oRb4f7pPz3cMBaxKz</p>
             </div>
         </footer>
     </div>
