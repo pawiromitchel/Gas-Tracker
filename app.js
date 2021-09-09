@@ -34,14 +34,14 @@ function getData() {
 
 getData();
 
-let counter = 25;
+let counter = 100;
 const newYearCountdown = setInterval(function () {
     counter--;
-    app.progressValue += 4;
+    app.progressValue += 1;
     if (counter === 0) {
         getData();
         // reset the values
         app.progressValue = 0;
-        counter = 25;
+        counter = 100;
     }
-}, 1000);
+}, 500);
