@@ -1,4 +1,3 @@
-
 const endpoint = 'https://api.zapper.fi/v1/gas-price?api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241&network=';
 const chains = ['ethereum', 'fantom', 'polygon', 'binance-smart-chain'];
 
@@ -74,8 +73,3 @@ const app = Vue.createApp(GasTracker).mount('#app');
 
 app.boilerplate()
 app.getData()
-
-
-
-
-
