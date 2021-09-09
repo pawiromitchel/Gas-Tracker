@@ -5,6 +5,13 @@ var app = new Vue({
         progressValue: 0,
         date: '',
         chains: [],
+        refreshed: false
+    },
+    watch: {
+        date() {
+            this.refreshed = true
+            setTimeout(() => { this.refreshed = false }, 1000)
+        }
     }
 });
 
@@ -26,17 +33,15 @@ function boilerplate() {
 
 async function getGasPrices(network) {
     const response = await fetch(`${endpoint}${network}`);
-    const movies = await response.json();
-    return movies;
+    const prices = await response.json();
+    return prices;
 }
 
-function getData() {
+async function getData() {
     app.date = new Date().toString();
-    const requests = chains.map(chain => getGasPrices(chain));
-    Promise.all(requests).then(res => {
-        res.map((gasPrices, index) => {
-            app.chains[index].gasPrice = gasPrices;
-        })
+    const data = await Promise.all(chains.map(chain => getGasPrices(chain)))
+    data.map((gasPrices, index) => {
+        app.chains[index].gasPrice = gasPrices;
     })
 }
 
