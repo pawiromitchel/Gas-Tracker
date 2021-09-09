@@ -13,12 +13,14 @@ const GasTracker = {
             refreshed: false
         }
     },
+
     methods: {
         getGasPrices: async (network) => {
             const response = await fetch(`${endpoint}${network}`);
             const prices = await response.json();
             return prices;
         },
+
         boilerplate: () => {
             chains.forEach(chain => {
                 app.chains.push({
@@ -31,6 +33,7 @@ const GasTracker = {
                 })
             })
         },
+
         getData: async () => {
             app.date = new Date().toString();
             const data = await Promise.all(chains.map(chain => app.getGasPrices(chain)))
@@ -38,6 +41,7 @@ const GasTracker = {
                 app.chains[index].gasPrice = gasPrices;
             })
         },
+
         timerCountdown: setInterval(function () {
             app.counter--;
             app.progressValue += 1;
@@ -49,9 +53,11 @@ const GasTracker = {
             }
         }, 500)
     },
+
     watch: {
         chains() {
         },
+
         date() {
             app.refreshed = true
             setTimeout(() => {
@@ -59,6 +65,7 @@ const GasTracker = {
             }, 1000)
         }
     },
+
     updated() {
     }
 
