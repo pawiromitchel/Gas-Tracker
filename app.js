@@ -9,7 +9,8 @@ const GasTracker = {
             progressValue: 0,
             date: '',
             chains: [],
-            counter: 100
+            counter: 100,
+            refreshed: false
         }
     },
     methods: {
@@ -47,7 +48,20 @@ const GasTracker = {
                 app.counter = 100;
             }
         }, 500)
+    },
+    watch: {
+        chains() {
+        },
+        date() {
+            app.refreshed = true
+            setTimeout(() => {
+                app.refreshed = false
+            }, 1000)
+        }
+    },
+    updated() {
     }
+
 }
 const app = Vue.createApp(GasTracker).mount('#app');
 
