@@ -11,6 +11,19 @@ var app = new Vue({
 const endpoint = 'https://api.zapper.fi/v1/gas-price?api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241&network=';
 const chains = ['ethereum', 'fantom', 'polygon', 'binance-smart-chain'];
 
+function boilerplate() {
+    chains.forEach(chain => {
+        app.chains.push({
+            name: capitalize(removeDashes(chain)),
+            gasPrice: {
+                instant: 0,
+                fast: 0,
+                standard: 0,
+            }
+        })
+    })
+}
+
 async function getGasPrices(network) {
     const response = await fetch(`${endpoint}${network}`);
     const movies = await response.json();
@@ -19,19 +32,15 @@ async function getGasPrices(network) {
 
 function getData() {
     app.date = new Date().toString();
-    app.chains = [];
-
     const requests = chains.map(chain => getGasPrices(chain));
     Promise.all(requests).then(res => {
         res.map((gasPrices, index) => {
-            app.chains.push({
-                name: capitalize(removeDashes(chains[index])),
-                gasPrice: gasPrices
-            })
+            app.chains[index].gasPrice = gasPrices;
         })
     })
 }
 
+boilerplate();
 getData();
 
 let counter = 100;
