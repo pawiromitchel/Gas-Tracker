@@ -5,6 +5,13 @@ var app = new Vue({
         progressValue: 0,
         date: '',
         chains: [],
+        refreshed: false
+    },
+    watch: {
+        chains() {
+            this.refreshed = true
+            setTimeout(() => { this.refreshed = false }, 1000)
+        }
     }
 });
 
