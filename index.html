@@ -28,29 +28,34 @@
         #dateFetched {
             transition: all 0.5s ease;
         }
+
+        a.tag.is-link {
+            margin-left: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container" id="app">
         <section class="section">
-            <h1 class="title">
-                ⛽ Just a Gas Tracker
-            </h1>
             <div class="columns">
                 <div class="column">
-                    Fetched at <strong id="dateFetched"
-                        :class="{'has-text-white': refreshed,'has-text-success':!refreshed}">{{date}}</strong>
+                    <p class="title">
+                        ⛽ Just a Gas Tracker
+                    </p>
+                    <p class="subtitle is-6">
+                        Fetched at <strong id="dateFetched"
+                            :class="{'has-text-white': refreshed,'has-text-success':!refreshed}">{{date}}</strong>
+                    </p>
+                </div>
+                <div class="column">
+                    <nav class="breadcrumb has-dot-separator is-medium is-centered" aria-label="breadcrumbs">
+                        <ul>
+                            <li v-for="chain in chains"><a v-bind:href="'#'+chain.name">{{chain.name}}</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            <!-- <progress class="progress is-primary" v-bind:value="progressValue" max="100"></progress> -->
-            <hr>
-            <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
-                <ul>
-                    <li v-for="chain in chains"><a v-bind:href="'#'+chain.name">{{chain.name}}</a></li>
-                </ul>
-            </nav>
-
         </section>
         <section class="section" v-for="chain in chains">
             <h1 class="title is-2 has-text-centered" v-bind:id="chain.name">{{chain.name}}</h1>
@@ -99,10 +104,12 @@
         </section>
         <footer class="footer">
             <div class="content has-text-centered">
-                Data provided by
-                <span class="tag is-link">
+                <a class="tag is-link" href="https://zapper.fi/">
                     Zapper API
-                </span>
+                </a>
+                <a class="tag is-link" href="https://github.com/pawiromitchel/Gas-Tracker">
+                    Github
+                </a>
                 <hr>
                 <p><strong>Wanna buy me a coffee? ☕</strong><br>
                     ETH or any ERC20: mitchel.eth || 0x5584A353528dfeB2Fc751Ab48b72D32726C79507<br>
