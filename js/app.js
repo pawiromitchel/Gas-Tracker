@@ -33,7 +33,8 @@ const GasTracker = {
         },
 
         getData: async () => {
-            app.date = moment().format('YYYY-MM-DD HH:mm:ss');
+            const date = new Date();
+            app.date = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
             const data = await Promise.all(chains.map(chain => app.getGasPrices(chain)));
             data.map((gasPrices, index) => {
                 app.chains[index].gasPrice = gasPrices;
