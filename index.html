@@ -14,11 +14,16 @@
     <!-- Web App Settings. -->
     <meta name="application-name" content="Gas Tracker">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#17181C">
+    <meta name="description" content="A multichain gas tracker build with the Zapper API">
 
     <title>⛽ Just a Gas Tracker</title>
     <link rel="stylesheet" href="./css/bulma-rtl.min.css">
     <link rel="stylesheet" href="./css/bulma-prefers-dark.min.css">
     <script src="./js/vue.global.prod.js"></script>
+
+    <link rel="manifest" href="./manifest.json">
+
     <style>
         .progress::-webkit-progress-value,
         h3,
@@ -108,17 +113,22 @@
                     Github
                 </a>
                 <hr>
-                <p><strong>Wanna buy me a coffee? ☕</strong><br>
-                    ETH or any ERC20: mitchel.eth || 0x5584A353528dfeB2Fc751Ab48b72D32726C79507<br>
-                    BTC Segwit: bc1qqfnfkrnhv903v9v38n98vvk35hgrp77ay7kwqr<br>
-                    BTC legacy: 1DhGZ1kvEF1wamq3oRb4f7pPz3cMBaxKz</p>
-                <hr>
                 Made with ♥ by <a href="https://twitter.com/Pawiromitchel">pawiromitchel</a>
             </div>
         </footer>
     </div>
     <script src="./js/utils.js"></script>
     <script src="./js/app.js"></script>
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 
 </html>

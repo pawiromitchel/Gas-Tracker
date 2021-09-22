@@ -1,0 +1,24 @@
+{
+    "short_name": "Gas Tracker",
+    "name": "A Multichain Gas Tracker",
+    "icons": [
+        {
+            "src": "icons/manifest-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/manifest-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#17181C",
+    "display": "fullscreen",
+    "scope": "/",
+    "theme_color": "#17181C",
+    "description": "A multichain gas tracker build with the Zapper API"
+}
